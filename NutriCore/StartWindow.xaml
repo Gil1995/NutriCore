@@ -1,0 +1,26 @@
+﻿<Window x:Class="NutriCore.StartWindow"
+        WindowStartupLocation="CenterScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NutriCore"
+        mc:Ignorable="d"
+        Title="NutriCore" Height="500" Width="700"
+        Icon="C:\Users\bella\source\repos\NutriCore\NutriCore\resources\KnobiRound.ico"
+        Loaded="Window_Loaded">
+    <Grid>
+        <Image
+            Stretch="Fill"
+            Source="C:\Users\bella\source\repos\NutriCore\NutriCore\resources\NutriCoreTitel750x500.png"
+            MouseLeftButtonDown="TitelImage_MouseLeftButtonDown"/>
+      <!-- 
+        <Button Height="Auto" Width="Auto"
+            Click="Titel_Click" Margin="0" BorderThickness="0" Padding="0" 
+            HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+            HorizontalAlignment="Center" VerticalAlignment="Center">
+            
+            <Image Source="C:\Users\bella\source\repos\NutriCore\NutriCore\resources\NutriCoreTitelKlein.png"/>            
+        </Button> -->
+    </Grid>
+</Window>
