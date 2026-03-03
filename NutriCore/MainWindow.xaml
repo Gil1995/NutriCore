@@ -654,6 +654,8 @@
                                                     <Setter TargetName="border"
                                                                     Property="Background"
                                                                     Value="#3c0f55"/>
+                                                    <Setter Property="Foreground" 
+                                                            Value="#f9d600" />
                                                 </Trigger>
                                             </ControlTemplate.Triggers>
                                         </ControlTemplate>
@@ -785,12 +787,12 @@
                                               Opacity="0.5"/>
                         </TextBlock.Effect>
                     </TextBlock>
-                <StackPanel Grid.Column="0" Grid.Row="1" Margin="5,10,5,10" HorizontalAlignment="Center">
+                <StackPanel Grid.Column="0" Grid.Row="1" Margin="5,10,5,10" HorizontalAlignment="Center">                    
                     <Label Margin="10,10,10,0" Foreground="DarkGray" Content="Name" HorizontalContentAlignment="Center"/>
-                    <TextBox TextWrapping="Wrap" Width="200" Background="Transparent" BorderBrush="Black" Margin="10,0,10,0" HorizontalContentAlignment="Center"
+                        <TextBox TextWrapping="Wrap" Width="200" Background="Transparent" BorderBrush="Black" Margin="10,0,10,0" HorizontalContentAlignment="Center"
                         Text="{Binding User.Name, UpdateSourceTrigger=PropertyChanged}"/>
 
-                    <Label Margin="10,10,10,0" Foreground="DarkGray" Content="Start-Gewicht [kg]" HorizontalContentAlignment="Center"/>
+                        <Label Margin="10,10,10,0" Foreground="DarkGray" Content="Start-Gewicht [kg]" HorizontalContentAlignment="Center"/>
                     <TextBox TextWrapping="Wrap" Width="200" Background="Transparent" BorderBrush="Black" Margin="10,0,10,0" HorizontalContentAlignment="Center"
                         Text="{Binding User.StartingWeight, UpdateSourceTrigger=PropertyChanged}"/>
 

@@ -160,7 +160,7 @@
                                    FontSize="15"/>
             <TextBox
                         x:Name="QuantityTextbox"                                                 
-                        Height="20" Width="150" Margin="10">
+                        Height="20" Width="150" Margin="10,5,10,5">
                             <TextBox.Style>
                                 <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
                                     <Style.Resources>
@@ -189,7 +189,8 @@
                     FontSize="13"
                             Command="{Binding AddAndCloseCommand}"
                             CommandParameter="{Binding Text, ElementName=QuantityTextbox}"
-                            Width="90">
+                            Width="90"
+                    Margin="10,0,10,5">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background" Value="Gray"/>
