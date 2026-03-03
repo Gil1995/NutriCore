@@ -29,12 +29,12 @@
             <Style TargetType="Button">
                     <Setter Property="Background" Value="Gray"/>
                     <Setter Property="Opacity" Value="0.7"/>
-                    <Setter Property="Template">
-                        <Setter.Value>
+                <Setter Property="Template">
+                    <Setter.Value>
                             <ControlTemplate TargetType="Button">
                                 <Border x:Name="border"
                                         CornerRadius="7"
-                                        Padding="10"
+                                        Padding="10"                                        
                                         Background="{TemplateBinding Background}">
                                     <ContentPresenter HorizontalAlignment="Center"
                                                       VerticalAlignment="Center"/>
@@ -65,8 +65,17 @@
                    VerticalAlignment="Center"
                    TextAlignment="Center"
                    Text="{Binding ToEdit.Name}" 
-                   FontWeight="Bold" FontSize="17"
-                   TextWrapping="Wrap"/>
+                   FontWeight="Bold" FontSize="17"                  
+                   Foreground="#f9d600"
+                   FontFamily="Century Schoolbook"
+                   TextWrapping="Wrap">
+            <TextBlock.Effect>
+                <DropShadowEffect ShadowDepth="5"
+                                              Direction="45"
+                                              Color="Black"
+                                              Opacity="0.5"/>
+            </TextBlock.Effect>
+        </TextBlock>
         <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
@@ -89,7 +98,8 @@
                 Grid.Column="0" Grid.Row="2"
                 Margin="10"
                 Content="Menge ändern"
-                FontSize="13"
+                FontSize="15"
+                FontWeight="SemiBold"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Width="Auto" Click="ChangeQuant_Click"/>
@@ -97,7 +107,8 @@
                 Grid.Column="1" Grid.Row="2"
                 Margin="10"
                 Content="Lebensmittel löschen"
-                FontSize="13"
+                FontSize="15"
+                FontWeight="SemiBold"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Width="Auto" Click="DeleteFood_Click"/>

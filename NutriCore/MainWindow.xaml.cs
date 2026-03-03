@@ -89,8 +89,10 @@ namespace NutriCore
         {
             string titel = "Impressum";
             string text = "Verantwortlich für den Inhalt: \nIsabella Franziska Herold\n\n" +
-                "Alle Inhalte zur nicht-kommerziellen Nutzung " +
-                "\nFont (Faith): https://www.dafont.com/faith-2.font \nBild (Icon): https://media.istockphoto.com/";
+                "Alle Inhalte zur nicht-kommerziellen Nutzung" +
+                "\nBild (Icon): https://media.istockphoto.com/" +
+                "\nFont (Start): https://www.dafont.com/faith-2.font " +
+                "\nBild (Start): https://vectorified.com/garlic-icon#garlic-icon-20.png";
             MessageBox.Show(text,titel);
         }
     }

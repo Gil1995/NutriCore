@@ -120,7 +120,7 @@
                         VerticalAlignment="Center"
                         CornerRadius="10" Padding="10" HorizontalAlignment="Center">
                     <Border.Background>
-                        <SolidColorBrush Color="Gray" Opacity="0.7"/>
+                        <SolidColorBrush Color="Gray" Opacity="0.5"/>
                     </Border.Background>
                     <Grid>
                         <Grid.RowDefinitions>
@@ -178,7 +178,7 @@
                         CornerRadius="10" Padding="10" HorizontalAlignment="Center">
 
                     <Border.Background>
-                        <SolidColorBrush Color="Gray" Opacity="0.7"/>
+                        <SolidColorBrush Color="Gray" Opacity="0.5"/>
                     </Border.Background>
                     <Grid>
                         <Grid.RowDefinitions>
@@ -204,8 +204,40 @@
                                     </Style.Triggers>
                                 </Style>
                             </ListBox.Resources>
+                                <ListBox.ItemContainerStyle>
+                                    <Style TargetType="ListBoxItem">
+                                        <Setter Property="Margin" Value="5"/>
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="ListBoxItem">
+                                                    <Border x:Name="border"
+                                                            CornerRadius="7"
+                                                            Padding="5">
+                                                        <Border.Background>
+                                                            <SolidColorBrush Color="Transparent" />
+                                                        </Border.Background>
+                                                        <ContentPresenter/>
+                                                    </Border>
 
-                            <TextBlock TextAlignment="Center"
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter TargetName="border"
+                                                                    Property="Background"
+                                                                    Value="#c31591"/>
+                                                            <Setter TargetName="border"
+                                                                    Property="Opacity"
+                                                                    Value="0.7"/>
+                                                        </Trigger>                                                        
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </ListBox.ItemContainerStyle>
+
+
+                                <TextBlock TextAlignment="Center"
                                    Margin ="0,0,0,5"><!-- Überschrift --><Run Text="DGE - Deutsche Gesellschaft für Ernährung"
                                    FontSize="13"
                                    FontWeight="DemiBold"/><LineBreak/><!-- Klickbarer Link --><Hyperlink NavigateUri="https://www.dge.de/gesunde-ernaehrung/gut-essen-und-trinken/dge-empfehlungen/"
