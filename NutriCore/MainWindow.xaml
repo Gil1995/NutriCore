@@ -738,17 +738,7 @@
         </TabItem>
         <TabItem Header="Profil">
             <Grid Margin="10">
-
-                <Grid.Resources>
-                    <Style TargetType="TextBox">
-                        <Style.Triggers>
-                            <Trigger Property="IsFocused" Value="True">
-                                <Setter Property="BorderBrush" Value="#c31591"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Grid.Resources>
-
+                
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
@@ -787,48 +777,93 @@
                                               Opacity="0.5"/>
                         </TextBlock.Effect>
                     </TextBlock>
+                
                 <StackPanel Grid.Column="0" Grid.Row="1" Margin="5,10,5,10" HorizontalAlignment="Center">                    
-                    <Label Margin="10,10,10,0" Foreground="DarkGray" Content="Name" HorizontalContentAlignment="Center"/>
-                        <TextBox TextWrapping="Wrap" Width="200" Background="Transparent" BorderBrush="Black" Margin="10,0,10,0" HorizontalContentAlignment="Center"
-                        Text="{Binding User.Name, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Label Margin="10,5,10,0" Foreground="DarkGray" Content="Name" HorizontalContentAlignment="Center"/>
+                        <Border CornerRadius="10" Padding="7" >
+                            <Border.Background>
+                                <SolidColorBrush Color="Gray" Opacity="0.5"/>
+                            </Border.Background>
+                            <TextBox TextWrapping="Wrap" Width="200" Background="Transparent" BorderThickness="0" HorizontalContentAlignment="Center"
+                                     Text="{Binding User.Name, UpdateSourceTrigger=PropertyChanged}"/>
+                        </Border>
+                        <Label Margin="10,5,10,0" Foreground="DarkGray" Content="Start-Gewicht [kg]" HorizontalContentAlignment="Center"/>
+                        <Border CornerRadius="10" Padding="7" >
+                            <Border.Background>
+                                <SolidColorBrush Color="Gray" Opacity="0.5"/>
+                            </Border.Background>
+                            <TextBox TextWrapping="Wrap" Width="200" Background="Transparent" BorderThickness="0" HorizontalContentAlignment="Center"
+                                     Text="{Binding User.StartingWeight, UpdateSourceTrigger=PropertyChanged}"/>
+                        </Border>
 
-                        <Label Margin="10,10,10,0" Foreground="DarkGray" Content="Start-Gewicht [kg]" HorizontalContentAlignment="Center"/>
-                    <TextBox TextWrapping="Wrap" Width="200" Background="Transparent" BorderBrush="Black" Margin="10,0,10,0" HorizontalContentAlignment="Center"
-                        Text="{Binding User.StartingWeight, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Label Margin="10,5,10,0" Foreground="DarkGray" Content="Ziel-Gewicht [kg]" HorizontalContentAlignment="Center"/>
+                        <Border CornerRadius="10" Padding="7" >
+                            <Border.Background>
+                                <SolidColorBrush Color="Gray" Opacity="0.5"/>
+                            </Border.Background>
+                            <TextBox TextWrapping="Wrap" Width="200" Background="Transparent" BorderThickness="0" HorizontalContentAlignment="Center"
+                                     Text="{Binding User.WeightGoal, UpdateSourceTrigger=PropertyChanged}"/>
+                        </Border>
 
-                    <Label Margin="10,10,10,0" Foreground="DarkGray" Content="Ziel-Gewicht [kg]" HorizontalContentAlignment="Center"/>
-                    <TextBox TextWrapping="Wrap" Width="200" Background="Transparent" BorderBrush="Black" Margin="10,0,10,0" HorizontalContentAlignment="Center"
-                        Text="{Binding User.WeightGoal, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Label Margin="10,5,10,0" Foreground="DarkGray" Content="Persönliche Motivation" HorizontalContentAlignment="Center"/>
+                        <Border CornerRadius="10" Padding="7" >
+                            <Border.Background>
+                                <SolidColorBrush Color="Gray" Opacity="0.5"/>
+                            </Border.Background>
+                            <TextBox TextWrapping="Wrap" Width="200" Background="Transparent" BorderThickness="0" HorizontalContentAlignment="Center"
+                                     Text="{Binding User.Motivation, UpdateSourceTrigger=PropertyChanged}"/>
+                        </Border>
 
-                    <Label Margin="10,10,10,0" Foreground="DarkGray" Content="Persönliche Motivation" HorizontalContentAlignment="Center"/>
-                    <TextBox TextWrapping="Wrap" Width="200" Background="Transparent" BorderBrush="Black" Margin="10,0,10,0" HorizontalContentAlignment="Center"
-                        Text="{Binding User.Motivation, UpdateSourceTrigger=PropertyChanged}"/>
 
-
-                </StackPanel>
+                    </StackPanel>
 
                 <StackPanel Grid.Column="1" Grid.Row="1" Margin="5,10,5,10" HorizontalAlignment="Center">
-                    <Label Margin="10,10,10,0" Foreground="DarkGray" Content="Kilokalorien" HorizontalContentAlignment="Center"/>
-                    <TextBox TextWrapping="Wrap" Width="200" Background="Transparent" BorderBrush="Black" Margin="10,0,10,0" HorizontalContentAlignment="Center"
-                        Text="{Binding User.KcalMax, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Label Margin="10,5,10,0" Foreground="DarkGray" Content="Kilokalorien" HorizontalContentAlignment="Center"/>
+                        <Border CornerRadius="10" Padding="7" >
+                            <Border.Background>
+                                <SolidColorBrush Color="Gray" Opacity="0.5"/>
+                            </Border.Background>
+                            <TextBox TextWrapping="Wrap" Width="200" Background="Transparent" BorderThickness="0" HorizontalContentAlignment="Center"
+                                     Text="{Binding User.KcalMax, UpdateSourceTrigger=PropertyChanged}"/>
+                        </Border>
 
-                    <Label Margin="10,10,10,0" Foreground="DarkGray" Content="Kohlenhydrate [g]" HorizontalContentAlignment="Center"/>
-                    <TextBox TextWrapping="Wrap" Width="200" Background="Transparent" BorderBrush="Black" Margin="10,0,10,0" HorizontalContentAlignment="Center"
-                        Text="{Binding User.ChoMax, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Label Margin="10,5,10,0" Foreground="DarkGray" Content="Kohlenhydrate [g]" HorizontalContentAlignment="Center"/>
+                        <Border CornerRadius="10" Padding="7" >
+                            <Border.Background>
+                                <SolidColorBrush Color="Gray" Opacity="0.5"/>
+                            </Border.Background>
+                            <TextBox TextWrapping="Wrap" Width="200" Background="Transparent" BorderThickness="0" HorizontalContentAlignment="Center"
+                                     Text="{Binding User.ChoMax, UpdateSourceTrigger=PropertyChanged}"/>
+                        </Border>
 
-                    <Label Margin="10,10,10,0" Foreground="DarkGray" Content="Protein [g]" HorizontalContentAlignment="Center"/>
-                    <TextBox TextWrapping="Wrap" Width="200" Background="Transparent" BorderBrush="Black" Margin="10,0,10,0" HorizontalContentAlignment="Center"
-                        Text="{Binding User.ProtMax, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Label Margin="10,5,10,0" Foreground="DarkGray" Content="Protein [g]" HorizontalContentAlignment="Center"/>
+                        <Border CornerRadius="10" Padding="7" >
+                            <Border.Background>
+                                <SolidColorBrush Color="Gray" Opacity="0.5"/>
+                            </Border.Background>
+                            <TextBox TextWrapping="Wrap" Width="200" Background="Transparent" BorderThickness="0" HorizontalContentAlignment="Center"
+                                     Text="{Binding User.ProtMax, UpdateSourceTrigger=PropertyChanged}"/>
+                        </Border>
 
-                    <Label Margin="10,10,10,0" Foreground="DarkGray" Content="Fett [g]" HorizontalContentAlignment="Center"/>
-                    <TextBox TextWrapping="Wrap" Width="200" Background="Transparent" BorderBrush="Black" Margin="10,0,10,0" HorizontalContentAlignment="Center"
-                        Text="{Binding User.FatMax, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Label Margin="10,5,10,0" Foreground="DarkGray" Content="Fett [g]" HorizontalContentAlignment="Center"/>
+                        <Border CornerRadius="10" Padding="7" >
+                            <Border.Background>
+                                <SolidColorBrush Color="Gray" Opacity="0.5"/>
+                            </Border.Background>
+                            <TextBox TextWrapping="Wrap" Width="200" Background="Transparent" BorderThickness="0" HorizontalContentAlignment="Center"
+                                     Text="{Binding User.FatMax, UpdateSourceTrigger=PropertyChanged}"/>
+                        </Border>
 
-                    <Label Margin="10,10,10,0" Foreground="DarkGray" Content="Ballaststoffe [g]" HorizontalContentAlignment="Center"/>
-                    <TextBox TextWrapping="Wrap" Width="200" Background="Transparent" BorderBrush="Black" Margin="10,0,10,0" HorizontalContentAlignment="Center"
-                        Text="{Binding User.FiberMax, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Label Margin="10,5,10,0" Foreground="DarkGray" Content="Ballaststoffe [g]" HorizontalContentAlignment="Center"/>
+                        <Border CornerRadius="10" Padding="7" >
+                            <Border.Background>
+                                <SolidColorBrush Color="Gray" Opacity="0.5"/>
+                            </Border.Background>
+                            <TextBox TextWrapping="Wrap" Width="200" Background="Transparent" BorderThickness="0" HorizontalContentAlignment="Center"
+                                     Text="{Binding User.FiberMax, UpdateSourceTrigger=PropertyChanged}"/>
+                        </Border>
 
-                    <!-- <Label Margin="10,10,10,0" Foreground="DarkGray" Content="Wasser [L]"/>
+                        <!-- <Label Margin="10,10,10,0" Foreground="DarkGray" Content="Wasser [L]"/>
                         <TextBox TextWrapping="Wrap" Width="200" Background="Transparent" BorderBrush="Black" Margin="10,0,10,0"
                         Text="{Binding User.WaterMax, UpdateSourceTrigger=PropertyChanged}"/> -->
                 </StackPanel>
