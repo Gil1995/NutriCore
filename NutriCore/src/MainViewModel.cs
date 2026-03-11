@@ -9,6 +9,10 @@ using System.Windows.Input;
 
 namespace NutriCore.src
 {
+    /// <summary>
+    /// MVVM: ViewModel fürs MainWindow
+    /// Schnittstelle zwischen CodeBehind & UI
+    /// </summary>
     internal class MainViewModel : INotifyPropertyChanged
     {
         private ProfileData _user = new ProfileData();
@@ -130,10 +134,10 @@ namespace NutriCore.src
                 }
             }
         }
-
+        // ------------------------------------------------------------- KONSTRUKTOR ----------------------------------------------------------------------------//
         public MainViewModel() 
         {
-            //Datenbank BLS Laden
+            //Datenbank BLS Laden|Liste füllen
             _blsDatabase = new BLSEntries<EssentialData>().LoadDBEntriesBLS();
 
            
@@ -153,15 +157,16 @@ namespace NutriCore.src
             User = new ProfileData().GetProfileDataFromFile();
             //UserProfil bei TabWechsel speichern
             ProfileTabChangedCommand = new RelayCommand<object>(OnProfileTabChanged);
+            //UserProfil bei Programmende speichern
             WindowClosingCommand = new RelayCommand<object>(_ => SaveProfile());
-
+            //Befehl um Lebensmittel hinzuzufügen
             AddAndCloseCommand = new RelayCommand<object>(ExecuteAdd);
         }
         
 
         // ------------------------------------------------------------- HILFSMETHODEN ------------------------------------------------------------------------//
 
-
+        //Methode zum Suchen von Lebensmitteln per Texteingabe & Suchbutton
         private void ExecuteSearch()
         {
             if (!string.IsNullOrWhiteSpace(SearchInput))
@@ -169,6 +174,8 @@ namespace NutriCore.src
             else
                 SearchedEntries = new BLSEntries<EssentialData>();
         }
+
+        //Aktualisiert die Anzeige der getrackten Lebensmittel
         private void RefreshTrackedEntries()
         {
             DBEntriesTracked.LoadDBEntriesTrackedPerDay(chosenDate);
@@ -213,6 +220,7 @@ namespace NutriCore.src
         protected void OnPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string name = null) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 
+        //speichert Profiltab eingaben in ProfileTextDatei
         private void SaveProfile()
         {
             User.SafeProfileData(User);
@@ -239,13 +247,13 @@ namespace NutriCore.src
             return searchResults;
         }
 
-
+        //Fügt Lebensmittel hinzu
         private void ExecuteAdd(object parameter)
         {
             var activeWindow = Application.Current.Windows
                                 .OfType<Window>()
                                 .SingleOrDefault(x => x.IsActive);
-            //Sollte nicht eintreten können
+            //sollte nicht eintreten können, da mengen textbox erst bei auswahl gezeigt - but safety first
             if (SelectedFood == null)
             {                
                 MessageBox.Show(

@@ -9,6 +9,10 @@ using System.Xml.Linq;
 
 namespace NutriCore.src
 {
+    /// <summary>
+    /// Vom Nutzer eingegebene Start-Daten
+    /// Werden in .txt gespeichert
+    /// </summary>
     internal class ProfileData 
     {
         ///Persönliche Daten
@@ -17,7 +21,6 @@ namespace NutriCore.src
         private double _weightGoal;
         private string _motivation;
         ///Tracking Ziele / Max Makros
-        // TODO Double absichern - am besten Eingabe runden
         private int _kcalMax;
         private int _choMax;
         private int _protMax;
@@ -39,6 +42,7 @@ namespace NutriCore.src
             FiberMax = 0;
             // WaterMax = 0;
         }
+        // --------------------------------------------- Konstruktoren ---------------------------------------------------------------------------------------- //
         public ProfileData(string name, double weightStart, double weightGoal, string motiviation,
                             int kcal, int cho, int prot, int fat, int fiber) //,int water)
         {
@@ -53,23 +57,6 @@ namespace NutriCore.src
             FatMax = fat;
             FiberMax = fiber;
             // WaterMax = water;
-        }
-        // Hat info gelesen? Bool in profile txt 
-        // zum anzeigen first window/panel ändern
-        ///Speichern in txt (Use on tab leave ! - Safety falls Programm abstürzt oder unsachgemäß beendet wird)
-        public void SafeProfileData(ProfileData toSave)
-        {
-            string fullPath = GetProfileFilePath();
-            string json = JsonSerializer.Serialize(toSave);
-
-            try
-            {
-                File.WriteAllText(fullPath, json);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Fehler beim Speichern: {ex.Message}");
-            }
         }
 
         ///Load für Systemstart
@@ -88,6 +75,24 @@ namespace NutriCore.src
             return data ?? new ProfileData();
         }
 
+        // ----------------------------------------- Methoden ----------------------------------------------------------------------------------------------- //
+
+        //Speichern in txt (Use on tab leave ! - Safety falls Programm abstürzt oder unsachgemäß beendet wird)
+        public void SafeProfileData(ProfileData toSave)
+        {
+            string fullPath = GetProfileFilePath();
+            string json = JsonSerializer.Serialize(toSave);
+
+            try
+            {
+                File.WriteAllText(fullPath, json);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Fehler beim Speichern: {ex.Message}");
+            }
+        }
+
         private string GetProfileFilePath()
         {
             string basePath = Path.Combine(
@@ -101,7 +106,11 @@ namespace NutriCore.src
             return Path.Combine(basePath, fileName);
         }
 
-        ///Getter&Setter
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null) =>
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+        //------------------------------------------ Getter&Setter -------------------------------------------------------------------------------------- //
         public string Name { get => _name; set { _name = value; OnPropertyChanged(); } }
         public double StartingWeight { get => _startingWeight; set { _startingWeight = value; OnPropertyChanged(); } }
         public double WeightGoal { get => _weightGoal; set { _weightGoal = value; OnPropertyChanged(); } }
@@ -112,10 +121,5 @@ namespace NutriCore.src
         public int FatMax { get => _fatMax; set { _fatMax = value; OnPropertyChanged(); } }
         public int FiberMax { get => _fiberMax; set { _fiberMax = value; OnPropertyChanged(); } }
         // public int WaterMax { get => _waterMax; set { _waterMax = value; OnPropertyChanged(); } }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null) =>
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
     }
 }

@@ -21,6 +21,7 @@ namespace NutriCore
     public partial class StartWindow : Window
     {
         DispatcherTimer timer;
+
         public StartWindow()
         {
             InitializeComponent();
@@ -30,6 +31,7 @@ namespace NutriCore
             timer.Start();
         }
 
+        //Falls Startfenster angeclickt wird, verschwindet es vor dem TimerEnde
         private void TitelImage_MouseLeftButtonDown(object sender, RoutedEventArgs e)
         {
             timer.Stop();
@@ -37,6 +39,7 @@ namespace NutriCore
             ShowMainWindow();
         }
 
+        //Hilfsmethode für einen Timer -> Startfenster verschwindet automatisch nach 15 Sekunden
         private void Timer_Tick(object sender, EventArgs e)
         {
             timer.Stop();
@@ -45,6 +48,7 @@ namespace NutriCore
             
         }
 
+        //Hilfsmethode zum Übergang von Startfenster -> Hauptfenster
         private void ShowMainWindow()
         {
             MainWindow main = new MainWindow();
@@ -52,13 +56,13 @@ namespace NutriCore
             this.Close();
         }
 
+        //Fensterleiste Design
         [DllImport("dwmapi.dll")]
         static extern int DwmSetWindowAttribute(
         IntPtr hwnd,
         int dwAttribute,
         ref int pvAttribute,
         int cbAttribute);
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var hwnd = new WindowInteropHelper(this).Handle;

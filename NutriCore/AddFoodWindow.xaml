@@ -8,6 +8,7 @@
         Loaded="Window_Loaded"
         Title="NutriCore - Lebensmittel tracken" Height="500" Width="750"
         Icon="C:\Users\bella\source\repos\NutriCore\NutriCore\resources\KnobiRound.ico">
+    
     <Grid>       
                     <Grid.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" Opacity="1">
@@ -227,6 +228,6 @@
             </Button>
         </StackPanel>
             
-                </Grid>
+    </Grid>
        
 </Window>

@@ -10,16 +10,16 @@ namespace NutriCore.src
     /// Liste zum Laden aller getrackten Daten 
     /// Füllen mit TrackedData
     /// Laden pro Tag
-    /// Am Tag Getracktes direkt hinzufügen, um erneutes Laden zu ersparen
     /// Anzeigen in TrackingFenster
     /// 
-    /// NICHT ZUM SPEICHERN GEEIGNET - Speichern immer direkt in DB
+    /// NICHT ZUM SPEICHERN GEEIGNET - Speichern immer direkt in DB - sonst Überblick schwer zu behalten
     /// 
     /// Observable Collection für Anzeige refresh
     /// 
     /// </summary>
     class TrackedEntries<T> : ObservableCollection<TrackedData>
     {
+        // Lädt alle getrackten Einträge eines übergebenen Datums aus der DB
         public void LoadDBEntriesTrackedPerDay(DateOnly chosenDate)
         {
             this.Clear();

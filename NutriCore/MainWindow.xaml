@@ -299,7 +299,7 @@
             </Grid>
         </TabItem>
 
-        <!-- maybe später als "tage die getrackt wurden" - Übersicht verwenden
+        <!-- vorerst überflüssig - maybe später als "tage die getrackt wurden" - Übersicht verwenden
             
             <TabItem Header="Kalender">
                 <Viewbox>

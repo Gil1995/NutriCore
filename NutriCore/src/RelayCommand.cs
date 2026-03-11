@@ -5,6 +5,11 @@ using System.Windows.Input;
 
 namespace NutriCore.src
 {    
+        /// <summary>
+        /// Erweiterung der Klasse ICommand - um 
+        /// Befehle angepasst im MVVM zu verwenden
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
         public class RelayCommand<T> : ICommand
         {
             private readonly Action<T> _execute;

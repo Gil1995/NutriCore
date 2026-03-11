@@ -19,8 +19,6 @@ namespace NutriCore
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     /// 
-
-    
     public partial class MainWindow : Window
     {                
         public MainWindow()
@@ -33,6 +31,7 @@ namespace NutriCore
 
         }
 
+        //Für clickbare Hyperlinks
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
             //öffnet browser
@@ -45,13 +44,13 @@ namespace NutriCore
         }
 
 
+        //Fensterleiste Design
         [DllImport("dwmapi.dll")]
         static extern int DwmSetWindowAttribute(
         IntPtr hwnd,
         int dwAttribute,
         ref int pvAttribute,
         int cbAttribute);
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var hwnd = new WindowInteropHelper(this).Handle;
@@ -65,7 +64,7 @@ namespace NutriCore
             DwmSetWindowAttribute(hwnd, DWMWA_CAPTION_COLOR, ref color, sizeof(int));           
         }
 
-
+        // Lebensmittel Tracken Button ClickBefehl
         private void AddLM_Click(object sender, RoutedEventArgs e)
         {
             AddFoodWindow add = new AddFoodWindow();
@@ -75,6 +74,7 @@ namespace NutriCore
             add.ShowDialog();
         }
 
+        //DoubleClick auf einen Listeneintrag -> Bearbeiten 
         private void TrackingListbox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (DataContext is MainViewModel vm && vm.SelectedEntry != null)
@@ -85,6 +85,7 @@ namespace NutriCore
             }
         }
 
+        //Clickbares Impressum auf InfoTab
         private void ImpressumTextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             string titel = "Impressum";

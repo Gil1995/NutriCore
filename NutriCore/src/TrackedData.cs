@@ -7,6 +7,9 @@ using System.Windows;
 
 namespace NutriCore.src
 {
+    /// <summary>
+    /// Objekt um einen getrackten Eintrag aus der DB abzubilden
+    /// </summary>
     public class TrackedData : INotifyPropertyChanged
     {
         private int _tableID;
@@ -14,6 +17,8 @@ namespace NutriCore.src
         private string _name;
         private double _quantityTracked;
         private DateOnly _dayOfTracking;
+
+        // ----------------------------------- Konstruktoren --------------------------------------------------------------------- //
 
         //Konstruktor um Daten für DB vorzubereiten (DB vergibt ID, daher id=0 -> und in Safe methode nicht übergeben)
         public TrackedData(string _referenceID, string _name, double _quantityTracked, DateOnly _dayOfTracking)
@@ -35,21 +40,13 @@ namespace NutriCore.src
             this.DayOfTracking = _dayOfTracking;
         } 
 
-        public int TableID { get => _tableID; set => _tableID = value; }
-        public string ReferenceID { get => _referenceID; set => _referenceID = value; }
-        public double QuantityTracked
-        {
-            get => _quantityTracked;
-            set
-            {
-                _quantityTracked = value;
-                OnPropertyChanged();
-                OnPropertyChanged(nameof(UnifyQuantity));
-            }
-        }
-        public DateOnly DayOfTracking { get => _dayOfTracking; set => _dayOfTracking = value; }
-        public string Name { get => _name; set => _name = value; }
+        // ---------------------------------------- Methoden --------------------------------------------------------------------------//
 
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
         public void SafeTrackedDataInDB(TrackedData userInput)
         {
             string id = userInput.ReferenceID;
@@ -73,7 +70,7 @@ namespace NutriCore.src
             }
             MessageBox.Show("Lebensmittel getrackt");           
         }
-
+        // -------------------------------------------- Getter & Setter -----------------------------------------------------------------//
         public string ShortenName
         {
             get
@@ -93,12 +90,19 @@ namespace NutriCore.src
                 return QuantityTracked + "g";
             }
         }
- 
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
+        public int TableID { get => _tableID; set => _tableID = value; }
+        public string ReferenceID { get => _referenceID; set => _referenceID = value; }
+        public double QuantityTracked
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            get => _quantityTracked;
+            set
+            {
+                _quantityTracked = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(UnifyQuantity));
+            }
         }
+        public DateOnly DayOfTracking { get => _dayOfTracking; set => _dayOfTracking = value; }
+        public string Name { get => _name; set => _name = value; }
     }
 }

@@ -24,13 +24,14 @@ namespace NutriCore
             InitializeComponent();
         }
 
+
+        //Fensterleiste Design
         [DllImport("dwmapi.dll")]
         static extern int DwmSetWindowAttribute(
         IntPtr hwnd,
         int dwAttribute,
         ref int pvAttribute,
         int cbAttribute);
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var hwnd = new WindowInteropHelper(this).Handle;

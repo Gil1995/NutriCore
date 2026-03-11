@@ -2,6 +2,9 @@
 
 namespace NutriCore.src
 {
+    /// <summary>
+    /// Objekt zur Abbildung eines BLS Datenbankeintrags
+    /// </summary>
     internal class EssentialData
     {
         private string _blsCode;

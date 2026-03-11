@@ -33,13 +33,13 @@ namespace NutriCore
         }
 
 
+        //Fensterleiste Design
         [DllImport("dwmapi.dll")]
         static extern int DwmSetWindowAttribute(
         IntPtr hwnd,
         int dwAttribute,
         ref int pvAttribute,
-        int cbAttribute);
-
+        int cbAttribute);       
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var hwnd = new WindowInteropHelper(this).Handle;
@@ -53,6 +53,7 @@ namespace NutriCore
             DwmSetWindowAttribute(hwnd, DWMWA_CAPTION_COLOR, ref color, sizeof(int));
         }
 
+        //Löschen Button ClickBefehl
         private void DeleteFood_Click(object sender, RoutedEventArgs e)
         {
             int id = ToEdit.TableID;
@@ -73,6 +74,7 @@ namespace NutriCore
             this.DialogResult = true;
         }
 
+        //MengeÄndern Button ClickBefehl
         private void ChangeQuant_Click(object sender, RoutedEventArgs e)
         {     
             int id = ToEdit.TableID;

@@ -3,6 +3,12 @@ using System.Collections.ObjectModel;
 
 namespace NutriCore.src
 {
+
+    /// <summary>
+    /// Liste aller BLS-Datenbank Einträge
+    /// wird zu Start geladen, um häufige DB Zugriffe zu Laufzeit zu vermeiden
+    /// </summary>
+    /// <returns></returns>
     internal class BLSEntries<T> : ObservableCollection<T>
     {
         public BLSEntries<EssentialData> LoadDBEntriesBLS()
@@ -43,6 +49,11 @@ namespace NutriCore.src
             return entriesList;
         }
 
+
+        /// <summary>
+        /// Verwendet, um eventuelle LOQ (Limit of Quantification) oder LOD (Limit of Detection) 
+        /// Einträge aus der DB zu filtern & durch logische 0 zu ersetzen 
+        /// </summary>       
         public static double GetSafeDouble(MySqlDataReader reader, string columnName)
         {
 
@@ -55,7 +66,7 @@ namespace NutriCore.src
 
             string strValue = value.ToString();
             
-            //Parse des strings auf Zahlen (Culture DE, also Komma als Trennzeichen)
+            //Parse des strings auf Zahlen (Culture DE, also Komma als Trennzeichen - Datensatz ist deutsch)
             if (double.TryParse(strValue,
                                 System.Globalization.NumberStyles.Any,
                                 System.Globalization.CultureInfo.GetCultureInfo("de-DE"),

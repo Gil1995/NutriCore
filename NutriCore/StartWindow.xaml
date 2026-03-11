@@ -13,14 +13,6 @@
         <Image
             Stretch="Fill"
             Source="C:\Users\bella\source\repos\NutriCore\NutriCore\resources\NutriCoreTitel750x500.png"
-            MouseLeftButtonDown="TitelImage_MouseLeftButtonDown"/>
-      <!-- 
-        <Button Height="Auto" Width="Auto"
-            Click="Titel_Click" Margin="0" BorderThickness="0" Padding="0" 
-            HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-            HorizontalAlignment="Center" VerticalAlignment="Center">
-            
-            <Image Source="C:\Users\bella\source\repos\NutriCore\NutriCore\resources\NutriCoreTitelKlein.png"/>            
-        </Button> -->
+            MouseLeftButtonDown="TitelImage_MouseLeftButtonDown"/>    
     </Grid>
 </Window>
